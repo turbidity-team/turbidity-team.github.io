@@ -10,3 +10,14 @@ header {
 section {
   padding: 150px 0;
 }
+
+
+section#landing{
+  border: 1px solid red;
+  background-image: url(../images/background-img.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+  padding: 200px 0;
+  color: white;
+}
