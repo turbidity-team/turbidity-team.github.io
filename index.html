@@ -40,6 +40,9 @@
             <a class="nav-link js-scroll-trigger" href="#litreview">Literature Review</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#methodology">Methodology</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">About</a>
           </li>
         </ul>
@@ -59,8 +62,8 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2>Turbidity Dashboard</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis, id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
-          <button type="button" class="btn btn-primary">View Dashboard</button>
+          <p class="lead">Turbidity is a measure of suspended particulates in water. The causes can range from waste water or large nutrient loads from fertilizer and other run off. Our project creates a turbidity dashboard using Google Earth Engine to allow detection of turbidity using remote sensing products without having to download and process imagery.</p>
+          <a href="https://solkim1.users.earthengine.app/view/turbtest" class="btn btn-primary">View Dashboard</a>
         </div>
       </div>
     </div>
@@ -71,7 +74,75 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <h2>Literature Review</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
+          <p class="lead"> A series of papers on wastewater detection using remote sensing and turbidity algorithms used. </p>
+      <p>Satellite detection of wastewater diversion plumes in Southern California
+      https://www.sciencedirect.com/science/article/pii/S0272771416304449</p>
+
+      <p><a href="https://www.sciencedirect.com/science/article/pii/S0025326X17301558" target="_blank">Stormwater runoff plumes in the Southern California Bight: A comparison study with SAR and MODIS imagery</a>
+      </p>
+
+      <p>
+        <a href="https://www.sciencedirect.com/science/article/pii/S0272771416301937" target="_blank">Glider and remote sensing observations of the upper ocean response to an extended shallow coastal diversion of wastewater effluent</a>
+      </p>
+
+      <p>
+        <a href="https://www.sciencedirect.com/science/article/pii/S0034425714003654" target="_blank">A single algorithm to retrieve turbidity from remotely-sensed data in all coastal and estuarine waters</a>
+
+      </p>
+
+      <p>
+
+        <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/7473/1/Calibration-and-validation-of-a-generic-multisensor-algorithm-for-mapping/10.1117/12.830700.short?SSO=1" target="_blank">Calibration and validation of a generic multisensor algorithm for mapping of turbidity in coastal waters</a>
+
+      </p>
+
+      <p>
+        <a href="https://www.researchgate.net/publication/304532385_Glider_and_remote_sensing_observations_of_the_upper_ocean_response_to_an_extended_shallow_coastal_diversion_of_wastewater_effluent" target="_blank">Glider and remote sensing observations of the upper ocean response to an extended shallow coastal diversion of wastewater effluent</a>
+
+
+      </p>
+
+      <p>
+        <a href="https://www.ncbi.nlm.nih.gov/pubmed/26933966" target="_blank">Coral reefs chronically exposed to river sediment plumes in the southwestern Caribbean: Rosario Islands, Colombia</a>
+      </p>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="methodology" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Methodology</h2>
+          <p class="lead">After reviewing literature on turbidity, it was clear that three turbidity algorithms are the standard for turbidity models: Nechad, Nechad 2016 and Dogliotti.
+          </p>
+          <p>
+            These turbidity algorithms rely on the red band of surface reflectance. We chose to use the Nechad 2016 algorithm. We have been quantifying differences in turbidity generated from these products: </p>
+          <ul>
+          <li>Landsat 8 Surface Reflectance product in GEE</li>
+          <li>Sentinel 2 Surface Reflectance product in GEE</li>
+          <li>ACOLITE Surface Reflectance</li>
+          </ul>
+          <img href="images/turbidity-alg.png"></img>
+          <p>
+          2016 Nechad algorithm is as follows and is performed at each pixel:
+          <br>
+          T = turbidity, A_t = coefficient, P_w = water leaving reflectance, C = coefficient
+          </p>
+
+          <p>
+            Our group utilized surface reflectance as opposed to water leaving reflectance. The coefficients for the turbidity were obtained from the source code in <a href="https://odnature.naturalsciences.be/remsem/software-and-data/acolite" target="_blank">ACOLITE</a> which is a software program used to atmospherically-correct images for coastal or inland water applications. We validated our implementation of the turbidity algorithm with ACOLITE’s and found no differences at the pixel level.
+          </p>
+          <p>
+            Through this project we aimed to quantify what the differences were in both surface reflectance and derived turbidity from ACOLITE and Google Earth Engine’s engine pre-processed images. We also compare these turbidity products to in-situ measurements at both locations.
+          </p>
+          <p>
+            Our workflow required running ACOLITE’s software on multiple Landsat 8 and Sentinel 2 scenes that we downloaded. The output from ACOLITE (surf_refl and turbidity) were uploaded to GEE to compare with GEE’s surf_refl and turbidity for both satellites.
+
+          </p>
         </div>
       </div>
     </div>
